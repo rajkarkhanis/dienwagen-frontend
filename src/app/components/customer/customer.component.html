@@ -1,0 +1,82 @@
+<ul class="nav nav-pills nav-fill" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button
+            class="nav-link active"
+            data-bs-toggle="tab"
+            data-bs-target="#search-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="search-tab-pane"
+            aria-selected="true"
+        >
+            Search Customer
+        </button>
+    </li>
+    <li class="nav-item">
+        <button
+            class="nav-link"
+            data-bs-toggle="tab"
+            data-bs-target="#add-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="add-tab-pane"
+            aria-selected="false"
+        >
+            Add Customer
+        </button>
+    </li>
+</ul>
+
+<!-- CONTENT -->
+<div class="tab-content">
+    <!-- SEARCH TAB PANE -->
+    <div
+        class="tab-pane fade show active"
+        id="search-tab-pane"
+        role="tabpanel"
+        aria-labelledby="search-tab"
+        tabindex="0"
+    >
+        <app-search-customer></app-search-customer>
+    </div>
+    <!-- ADD TAB PANE -->
+    <div
+        class="tab-pane fade"
+        id="add-tab-pane"
+        role="tabpanel"
+        aria-labelledby="add-tab"
+        tabindex="1"
+    >
+        <app-add-customer></app-add-customer>
+    </div>
+    <!-- CUSTOMER TABLE -->
+    <div class="table-responsive mt-5">
+        <table
+            class="table table-striped table-hover table-bordered align-middle"
+        >
+            <thead>
+                <tr>
+                    <th scope="col">Customer ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Address</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Raj</td>
+                    <td>Karkhanis</td>
+                    <td>9987348605</td>
+                    <td>rkarkahnis00@gmail.com</td>
+                    <td>Mumbai, MH</td>
+                    <td>
+                        <button class="btn btn-success">Select</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

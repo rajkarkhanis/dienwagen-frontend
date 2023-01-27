@@ -1,0 +1,58 @@
+<div class="d-flex px-5 gap-5 mt-5">
+    <div>
+        <h4>Search your desired vehicle</h4>
+        <div class="filter-grid mt-3">
+            <label for="model-select" class="form-label">Model</label>
+            <select id="model-select" class="form-select-sm">
+                <option selected value="all">All Types</option>
+                <option value="a">Class A</option>
+                <option value="b">Class B</option>
+                <option value="c">Class C</option>
+                <option value="e">Class E</option>
+            </select>
+            <label for="vehicle-type-select" class="form-label">Vehicle Type</label>
+            <select id="vehicle-type-select" class="form-select-sm">
+                <option selected value="all">All Types</option>
+                <option value="a">Class A</option>
+                <option value="b">Class B</option>
+                <option value="c">Class C</option>
+                <option value="e">Class E</option>
+            </select>
+            <label for="engine-type-select" class="form-label">Engine Type</label>
+            <select id="engine-type-select" class="form-select-sm">
+                <option selected value="all">All Types</option>
+                <option value="a">Class A</option>
+                <option value="b">Class B</option>
+                <option value="c">Class C</option>
+                <option value="e">Class E</option>
+            </select>
+        </div>
+        <button class="btn btn-primary mt-3" type="button">Search</button>
+    </div>
+    <!-- MODEL TABLE -->
+    <div class="table-responsive flex-fill">
+        <table
+            class="table table-striped table-hover table-bordered align-middle"
+        >
+            <thead>
+                <tr>
+                    <th scope="col">Model Type</th>
+                    <th scope="col">Body</th>
+                    <th scope="col">Engine</th>
+                    <th scope="col">Price (€)</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr>
+                    <th scope="row">E 200 Cabriolet</th>
+                    <td>Cabriolet/td></td>
+                    <td>Petrol</td>
+                    <td>44,053.80</td>
+                    <td>
+                        <button class="btn btn-success">Select</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

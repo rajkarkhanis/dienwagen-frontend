@@ -7,6 +7,10 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { SearchCustomerComponent } from './components/search-customer/search-customer.component';
 import { AddCustomerComponent } from './components/add-customer/add-customer.component';
 import { HomeComponent } from './components/home/home.component';
+import { VehicleModelComponent } from './components/vehicle-model/vehicle-model.component';
+import { VehicleLineComponent } from './components/vehicle-line/vehicle-line.component';
+import { VehiclePaintComponent } from './components/vehicle-paint/vehicle-paint.component';
+import { VehicleEquipmentComponent } from './components/vehicle-equipment/vehicle-equipment.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +18,11 @@ import { HomeComponent } from './components/home/home.component';
     CustomerComponent,
     SearchCustomerComponent,
     AddCustomerComponent,
-    HomeComponent
+    HomeComponent,
+    VehicleModelComponent,
+    VehicleLineComponent,
+    VehiclePaintComponent,
+    VehicleEquipmentComponent
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,7 @@ import { VehicleModelComponent } from './components/vehicle-model/vehicle-model.
 import { VehicleLineComponent } from './components/vehicle-line/vehicle-line.component';
 import { VehiclePaintComponent } from './components/vehicle-paint/vehicle-paint.component';
 import { VehicleEquipmentComponent } from './components/vehicle-equipment/vehicle-equipment.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { VehicleEquipmentComponent } from './components/vehicle-equipment/vehicl
     VehicleModelComponent,
     VehicleLineComponent,
     VehiclePaintComponent,
-    VehicleEquipmentComponent
+    VehicleEquipmentComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

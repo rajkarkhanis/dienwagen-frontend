@@ -11,7 +11,7 @@ const routes: Routes = [
     { path: 'equipment', component: VehicleEquipmentComponent },
     { path: 'paint', component: VehiclePaintComponent },
     { path: 'line', component: VehicleLineComponent },
-    { path: 'model', component: VehicleModelComponent },
+    { path: 'vehicle', component: VehicleModelComponent },
     { path: 'customer', component: CustomerComponent },
     { path: 'home', component: HomeComponent },
     { path: '', component: HomeComponent }

@@ -1,0 +1,48 @@
+<div class="px-5">
+    <h3 class="my-3">Customer Details</h3>
+    <div class="two-col-grid">
+        <p>Customer Name</p>
+        <p>Raj Karkhanis</p>
+        <p>Phone Number</p>
+        <p>9987348605</p>
+        <p>Address</p>
+        <p>Mumbai, MH</p>
+        <p>Email ID</p>
+        <p>rkarkhanis00@gmail.com</p>
+    </div>
+    <div class="two-col-grid mt-3">
+        <div>
+            <h3 class="my-3">Price List</h3>
+            <div class="two-col-grid">
+                <label for="base-price" class="form-label">Price (in €)</label>
+                <input type="number" class="form-control" id="base-price" />
+                <label for="transport-price" class="form-label"
+                    >Transprot Cost (in €)</label
+                >
+                <input
+                    type="number"
+                    class="form-control"
+                    id="transprot-price"
+                />
+                <label for="discount" class="form-label">Discount (in €)</label>
+                <input type="number" class="form-control" id="discount" />
+                <label for="total-price" class="form-label">Price (in €)</label>
+                <input type="number" class="form-control" id="total-price" />
+            </div>
+        </div>
+        <div>
+            <h3 class="my-3">Order Detail</h3>
+            <div class="two-col-grid">
+                <label for="order-date">Order Date</label>
+                <input type="date" id="order-date" class="form-control" />
+                <label for="delivery-date">Delivery Date</label>
+                <input type="date" id="delivery-date" class="form-control" />
+                <label for="dealer-id" class="form-label">Dealer ID</label>
+                <input type="number" id="dealer-id" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center my-3">
+        <button class="btn btn-success my-3" (click)="showAgreement()">Save and Print Agreement</button>
+    </div>
+</div>

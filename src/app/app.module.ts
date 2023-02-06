@@ -12,25 +12,38 @@ import { VehicleLineComponent } from './components/vehicle-line/vehicle-line.com
 import { VehiclePaintComponent } from './components/vehicle-paint/vehicle-paint.component';
 import { VehicleEquipmentComponent } from './components/vehicle-equipment/vehicle-equipment.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { QuotationComponent } from './components/quotation/quotation.component';
+import { OrderComponent } from './components/order/order.component';
+import { PlaceOrderComponent } from './components/place-order/place-order.component';
+import { SearchOrderComponent } from './components/search-order/search-order.component';
+import { AgreementComponent } from './components/agreement/agreement.component';
+import { ConfirmOrderComponent } from './components/confirm-order/confirm-order.component';
+import { OrderPlacedComponent } from './components/order-placed/order-placed.component';
+import { OrderStatusComponent } from './components/order-status/order-status.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CustomerComponent,
-    SearchCustomerComponent,
-    AddCustomerComponent,
-    HomeComponent,
-    VehicleModelComponent,
-    VehicleLineComponent,
-    VehiclePaintComponent,
-    VehicleEquipmentComponent,
-    NavbarComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        CustomerComponent,
+        SearchCustomerComponent,
+        AddCustomerComponent,
+        HomeComponent,
+        VehicleModelComponent,
+        VehicleLineComponent,
+        VehiclePaintComponent,
+        VehicleEquipmentComponent,
+        NavbarComponent,
+        QuotationComponent,
+        OrderComponent,
+        PlaceOrderComponent,
+        SearchOrderComponent,
+        AgreementComponent,
+        ConfirmOrderComponent,
+        OrderPlacedComponent,
+        OrderStatusComponent,
+    ],
+    imports: [BrowserModule, AppRoutingModule],
+    providers: [],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

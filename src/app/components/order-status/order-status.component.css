@@ -1,0 +1,14 @@
+.step {
+    padding-inline: 2rem;
+    padding-block: 1.5rem;
+    border-radius: 1rem;
+    border-style: solid;
+    border-color: #198754;
+    color: #198754;
+}
+
+.completed {
+    background-color: #198754;
+    color: white;
+}
+

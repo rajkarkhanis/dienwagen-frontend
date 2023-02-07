@@ -9,7 +9,6 @@ import { OrderStatusComponent } from './components/order-status/order-status.com
 import { OrderComponent } from './components/order/order.component';
 import { QuotationComponent } from './components/quotation/quotation.component';
 import { VehicleEquipmentComponent } from './components/vehicle-equipment/vehicle-equipment.component';
-import { VehicleLineComponent } from './components/vehicle-line/vehicle-line.component';
 import { VehicleModelComponent } from './components/vehicle-model/vehicle-model.component';
 import { VehiclePaintComponent } from './components/vehicle-paint/vehicle-paint.component';
 
@@ -22,7 +21,6 @@ const routes: Routes = [
     { path: 'quote', component: QuotationComponent },
     { path: 'equipment', component: VehicleEquipmentComponent },
     { path: 'paint', component: VehiclePaintComponent },
-    { path: 'line', component: VehicleLineComponent },
     { path: 'vehicle', component: VehicleModelComponent },
     { path: 'customer', component: CustomerComponent },
     { path: 'home', component: HomeComponent },

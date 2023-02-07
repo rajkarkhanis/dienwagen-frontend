@@ -59,6 +59,6 @@ modelSelect: any;
     }
 
     nextPage() {
-        this.router.navigate(['line']);
+        this.router.navigate(['paint']);
     }
 }

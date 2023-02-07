@@ -9,7 +9,6 @@ import { SearchCustomerComponent } from './components/search-customer/search-cus
 import { AddCustomerComponent } from './components/add-customer/add-customer.component';
 import { HomeComponent } from './components/home/home.component';
 import { VehicleModelComponent } from './components/vehicle-model/vehicle-model.component';
-import { VehicleLineComponent } from './components/vehicle-line/vehicle-line.component';
 import { VehiclePaintComponent } from './components/vehicle-paint/vehicle-paint.component';
 import { VehicleEquipmentComponent } from './components/vehicle-equipment/vehicle-equipment.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -31,7 +30,6 @@ import { FormsModule } from '@angular/forms';
         AddCustomerComponent,
         HomeComponent,
         VehicleModelComponent,
-        VehicleLineComponent,
         VehiclePaintComponent,
         VehicleEquipmentComponent,
         NavbarComponent,

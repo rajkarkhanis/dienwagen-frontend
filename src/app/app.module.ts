@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import { AgreementComponent } from './components/agreement/agreement.component';
 import { ConfirmOrderComponent } from './components/confirm-order/confirm-order.component';
 import { OrderPlacedComponent } from './components/order-placed/order-placed.component';
 import { OrderStatusComponent } from './components/order-status/order-status.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -42,7 +44,7 @@ import { OrderStatusComponent } from './components/order-status/order-status.com
         OrderPlacedComponent,
         OrderStatusComponent,
     ],
-    imports: [BrowserModule, AppRoutingModule],
+    imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
     providers: [],
     bootstrap: [AppComponent],
 })

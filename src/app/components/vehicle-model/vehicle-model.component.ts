@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { BackendService } from 'src/app/services/backend.service';
 
 @Component({
     selector: 'app-vehicle-model',
@@ -7,11 +8,41 @@ import { Router } from '@angular/router';
     styleUrls: ['./vehicle-model.component.css'],
 })
 export class VehicleModelComponent {
+modelSelect: any;
+    constructor(private router: Router, private backend: BackendService) {}
 
-    constructor(private router: Router) {}
+    response: any;
+    models: String[] = [];
+    bodies: String[] = [];
+    engines: String[] = [];
 
-    selectVehicleModel() {
-        console.log(`Will build a JSON object here`)
-        this.router.navigate(['line'])
+    selectedModel: any;
+    selectedEngine: any;
+    selectedBody: any;
+
+    fetchData() {
+        this.backend.getCatalogue().subscribe((res) => {
+            this.response = res
+            this.models = this.response.models
+            this.engines = this.response.engines
+            this.bodies = this.response.bodies
+        });
+    }
+
+    ngOnInit() {
+        this.fetchData();
+    }
+
+    searchVehicles() {
+        const filter = {
+            modelName: this.selectedModel,
+            engineName: this.selectedEngine,
+            bodyType: this.selectedBody
+        }
+        console.log(filter)
+    }
+
+    nextPage() {
+        this.router.navigate(['line']);
     }
 }

@@ -12,20 +12,25 @@ modelSelect: any;
     constructor(private router: Router, private backend: BackendService) {}
 
     response: any;
-    models: String[] = [];
-    bodies: String[] = [];
-    engines: String[] = [];
+    modelNames: String[] = [];
+    bodyNames: String[] = [];
+    engineNames: String[] = [];
 
     selectedModel: any;
     selectedEngine: any;
     selectedBody: any;
 
+    models: any;
+    lines: any;
+    engines: any;
+    bodies: any;
+
     fetchData() {
         this.backend.getCatalogue().subscribe((res) => {
             this.response = res
-            this.models = this.response.models
-            this.engines = this.response.engines
-            this.bodies = this.response.bodies
+            this.modelNames = this.response.models
+            this.engineNames = this.response.engines
+            this.bodyNames = this.response.bodies
         });
     }
 
@@ -39,7 +44,18 @@ modelSelect: any;
             engineName: this.selectedEngine,
             bodyType: this.selectedBody
         }
-        console.log(filter)
+        this.backend.getVehiclesByFilter(filter).subscribe(res => {
+            this.response = res
+            this.lines = this.response.lines
+            this.bodies = this.response.bodies
+            this.engines = this.response.engines
+            console.log(this.engines)
+        })
+    }
+
+    selectVehicle() {
+        console.log(`Should do something here`)
+        this.nextPage()
     }
 
     nextPage() {

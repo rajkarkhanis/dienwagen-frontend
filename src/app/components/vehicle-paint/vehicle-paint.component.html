@@ -3,72 +3,51 @@
         <!-- INTERIOR PAINT -->
         <div class="">
             <h3>Select Interior Paint</h3>
-            <div class="form-check mt-3">
-                <input
-                    class="form-check-input"
-                    type="radio"
-                    name="int-paint"
-                    id="int-paint-1"
-                    checked
-                />
-                <label class="form-check-label" for="int-paint-1">
-                    Grey | €0
-                </label>
-            </div>
-            <div class="form-check mt-3">
-                <input
-                    class="form-check-input"
-                    type="radio"
-                    name="int-paint"
-                    id="int-paint-2"
-                />
-                <label class="form-check-label" for="int-paint-2">
-                    Brown Leather | €23.80
-                </label>
+            <div *ngFor="let paint of interiorPaints">
+                <div class="form-check mt-2">
+                    <input
+                        class="form-check-input"
+                        type="radio"
+                        name="int-paint"
+                        id="int-paint-1"
+                        checked
+                    />
+                    <label class="form-check-label" for="int-paint-1">
+                        {{ paint.paintName }} | €{{ paint.paintPrice }}
+                    </label>
+                </div>
             </div>
         </div>
         <!-- EXTERIOR PAINT -->
         <div class="">
             <h3>Select Exterior Paint</h3>
-            <div class="form-check mt-3">
-                <input
-                    class="form-check-input"
-                    type="radio"
-                    name="ext-paint"
-                    id="ext-paint-1"
-                    checked
-                />
-                <label class="form-check-label" for="ext-paint-1">
-                    Red Metallic | €123.80
-                </label>
-            </div>
-            <div class="form-check mt-3">
-                <input
-                    class="form-check-input"
-                    type="radio"
-                    name="ext-paint"
-                    id="ext-paint-2"
-                />
-                <label class="form-check-label" for="ext-paint-2">
-                    Black | €0
-                </label>
-            </div>
-            <div class="form-check mt-3">
-                <input
-                    class="form-check-input"
-                    type="radio"
-                    name="ext-paint"
-                    id="ext-paint-3"
-                />
-                <label class="form-check-label" for="ext-paint-3">
-                    White | €0
-                </label>
+            <div *ngFor="let paint of exteriorPaints">
+                <div class="form-check mt-2">
+                    <input
+                        class="form-check-input"
+                        type="radio"
+                        name="ext-paint"
+                        id="ext-paint-1"
+                        checked
+                    />
+                    <label class="form-check-label" for="ext-paint-1">
+                        {{ paint.paintName }} | €{{ paint.paintPrice }}
+                    </label>
+                </div>
             </div>
         </div>
     </div>
     <!-- NEXT BUTTON -->
     <div class="d-flex justify-content-center mt-5 gap-3">
-        <button class="btn btn-secondary mt-3" type="button" (click)="goBack()">Back</button>
-        <button class="btn btn-success mt-3" type="button" (click)="selectVehiclePaint()">Next</button>
+        <button class="btn btn-secondary mt-3" type="button" (click)="goBack()">
+            Back
+        </button>
+        <button
+            class="btn btn-success mt-3"
+            type="button"
+            (click)="selectVehiclePaint()"
+        >
+            Next
+        </button>
     </div>
 </div>

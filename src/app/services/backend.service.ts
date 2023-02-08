@@ -7,6 +7,10 @@ import { Injectable } from '@angular/core';
 export class BackendService {
     constructor(private http: HttpClient) {}
 
+    createRequest() {
+        return this.http.get(`http://localhost:8080/requests/new`)
+    }
+
     getCatalogue() {
         return this.http.get(`http://localhost:8080/models`)
     }

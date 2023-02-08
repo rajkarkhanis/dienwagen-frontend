@@ -15,7 +15,7 @@ export class VehiclePaintComponent {
     exteriorPaints: any;
 
     goBack() {
-        this.router.navigate(['line']);
+        this.router.navigate(['vehicle']);
     }
 
     ngOnInit() {

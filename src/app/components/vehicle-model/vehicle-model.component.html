@@ -57,11 +57,11 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                <tr *ngFor="let line of lines; let i = index">
-                    <th scope="row">{{ line.lineName }}</th>
-                    <td>Body</td>
-                    <td>{{ line.vehicleEngine.engineName }}</td>
-                    <td>{{ line.linePrice | currency : "EUR" }}</td>
+                <tr *ngFor="let i = index; let vehicle; of: vehicles">
+                    <th scope="row">{{ vehicle.lineName }}</th>
+                    <td>{{ vehicle.bodyType }}</td>
+                    <td>{{ vehicle.vehicleEngine.engineName }}</td>
+                    <td>{{ vehicle.linePrice | currency : "EUR" }}</td>
                     <td>
                         <button
                             class="btn btn-success"

@@ -19,10 +19,9 @@ export class VehicleModelComponent {
     selectedEngine: any;
     selectedBody: any;
 
-    models: any;
     lines: any;
-    engines: any;
     bodies: any;
+    vehicles: any;
 
     vehicleRequest: VehicleRequest;
 
@@ -56,21 +55,30 @@ export class VehicleModelComponent {
 
         this.backend.getVehiclesByFilter(filter).subscribe((res) => {
             this.response = res;
+            console.log(res);
             this.lines = this.response.lines;
             this.bodies = this.response.bodies;
-            this.engines = this.response.engines;
+
+            // combine the two arrays into one
+            this.vehicles = this.lines.map((item: any, index: number) => ({
+                ...item,
+                ...this.bodies[index],
+            }));
+
+            console.log(this.vehicles);
         });
     }
 
     selectVehicle(index: number) {
         console.log(`Should do something here`);
         // add lineId, engineId, bodyId, modelId here to vehicleRequest
-        const selectedLine = this.lines[index]
-        this.vehicleRequest.lineId =  selectedLine.lineId
-        this.vehicleRequest.engineId = selectedLine.vehicleEngine.engineId
-        this.vehicleRequest.modelId = selectedLine.vehicleModel.modelId
+        const selectedVehicle = this.vehicles[index];
+        this.vehicleRequest.lineId = selectedVehicle.lineId;
+        this.vehicleRequest.bodyId = selectedVehicle.bodyId;
+        this.vehicleRequest.engineId = selectedVehicle.vehicleEngine.engineId;
+        this.vehicleRequest.modelId = selectedVehicle.vehicleModel.modelId;
 
-        this.requestDataService.setVehicleRequest(this.vehicleRequest)
+        this.requestDataService.setVehicleRequest(this.vehicleRequest);
         this.nextPage();
     }
 

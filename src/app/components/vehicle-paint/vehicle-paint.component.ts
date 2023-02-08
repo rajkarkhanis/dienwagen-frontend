@@ -16,6 +16,9 @@ export class VehiclePaintComponent {
 
     vehicleRequest: VehicleRequest;
 
+    selectedInteriorPaint: any;
+    selectedExteriorPaint: any;
+
     constructor(
         private router: Router,
         private backend: BackendService,
@@ -46,7 +49,10 @@ export class VehiclePaintComponent {
     }
 
     selectVehiclePaint() {
-        console.log(`Build JSON Object here`);
+        this.vehicleRequest.interiorPaintId = Number(this.selectedInteriorPaint);
+        this.vehicleRequest.exteriorPaintId = Number(this.selectedExteriorPaint);
+
+        this.requestDataService.setVehicleRequest(this.vehicleRequest)
         this.nextPage();
     }
 

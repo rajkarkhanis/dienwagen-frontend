@@ -6,11 +6,12 @@
             <div *ngFor="let paint of interiorPaints">
                 <div class="form-check mt-2">
                     <input
+                        [(ngModel)]="selectedInteriorPaint"
                         class="form-check-input"
                         type="radio"
                         name="int-paint"
                         id="int-paint-1"
-                        checked
+                        value="{{ paint.paintId }}"
                     />
                     <label class="form-check-label" for="int-paint-1">
                         {{ paint.paintName }} | €{{ paint.paintPrice }}
@@ -24,11 +25,12 @@
             <div *ngFor="let paint of exteriorPaints">
                 <div class="form-check mt-2">
                     <input
+                        [(ngModel)]="selectedExteriorPaint"
                         class="form-check-input"
                         type="radio"
                         name="ext-paint"
                         id="ext-paint-1"
-                        checked
+                        value="{{ paint.paintId }}"
                     />
                     <label class="form-check-label" for="ext-paint-1">
                         {{ paint.paintName }} | €{{ paint.paintPrice }}

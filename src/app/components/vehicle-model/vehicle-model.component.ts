@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { VehicleRequest } from 'src/app/classes/vehicle-request';
 import { BackendService } from 'src/app/services/backend.service';
+import { RequestDataService } from 'src/app/services/request-data.service';
 
 @Component({
     selector: 'app-vehicle-model',
@@ -9,8 +10,6 @@ import { BackendService } from 'src/app/services/backend.service';
     styleUrls: ['./vehicle-model.component.css'],
 })
 export class VehicleModelComponent {
-    constructor(private router: Router, private backend: BackendService) {}
-
     response: any;
     modelNames: String[] = [];
     bodyNames: String[] = [];
@@ -25,7 +24,15 @@ export class VehicleModelComponent {
     engines: any;
     bodies: any;
 
-    vehicleRequest: VehicleRequest | undefined;
+    vehicleRequest: VehicleRequest;
+
+    constructor(
+        private router: Router,
+        private backend: BackendService,
+        private requestDataService: RequestDataService
+    ) {
+        this.vehicleRequest = requestDataService.getVehicleRequest();
+    }
 
     fetchData() {
         this.backend.getCatalogue().subscribe((res) => {
@@ -46,6 +53,7 @@ export class VehicleModelComponent {
             engineName: this.selectedEngine,
             bodyType: this.selectedBody,
         };
+
         this.backend.getVehiclesByFilter(filter).subscribe((res) => {
             this.response = res;
             this.lines = this.response.lines;
@@ -54,8 +62,15 @@ export class VehicleModelComponent {
         });
     }
 
-    selectVehicle() {
+    selectVehicle(index: number) {
         console.log(`Should do something here`);
+        // add lineId, engineId, bodyId, modelId here to vehicleRequest
+        const selectedLine = this.lines[index]
+        this.vehicleRequest.lineId =  selectedLine.lineId
+        this.vehicleRequest.engineId = selectedLine.vehicleEngine.engineId
+        this.vehicleRequest.modelId = selectedLine.vehicleModel.modelId
+
+        this.requestDataService.setVehicleRequest(this.vehicleRequest)
         this.nextPage();
     }
 

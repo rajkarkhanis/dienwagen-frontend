@@ -13,9 +13,8 @@
                         value="{{ equipment.equipmentId }}"
                     />
                     <label class="form-check-label" for="equipment-1">
-                        {{ equipment.equipmentName }} | €{{
-                            equipment.equipmentPrice
-                        }}
+                        {{ equipment.equipmentName }} |
+                        {{ equipment.equipmentPrice | currency : "EUR" }}
                     </label>
                 </div>
             </div>

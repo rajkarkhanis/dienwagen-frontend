@@ -24,7 +24,7 @@ export class VehiclePaintComponent {
         private backend: BackendService,
         private requestDataService: RequestDataService
     ) {
-        this.vehicleRequest = requestDataService.getVehicleRequest()
+        this.vehicleRequest = requestDataService.getVehicleRequest();
     }
 
     goBack() {
@@ -33,7 +33,7 @@ export class VehiclePaintComponent {
 
     ngOnInit() {
         this.fetchData();
-        console.log(`From paints: `, this.vehicleRequest)
+        console.log(`From paint init: `, this.vehicleRequest);
     }
 
     fetchData() {
@@ -49,10 +49,27 @@ export class VehiclePaintComponent {
     }
 
     selectVehiclePaint() {
-        this.vehicleRequest.interiorPaintId = Number(this.selectedInteriorPaint);
-        this.vehicleRequest.exteriorPaintId = Number(this.selectedExteriorPaint);
+        this.vehicleRequest.interiorPaintId = Number(
+            this.selectedInteriorPaint
+        );
+        this.vehicleRequest.exteriorPaintId = Number(
+            this.selectedExteriorPaint
+        );
 
-        this.requestDataService.setVehicleRequest(this.vehicleRequest)
+        const foundIntPaint = this.interiorPaints.find(
+            (paint: { paintId: number }) =>
+                paint.paintId == this.vehicleRequest.interiorPaintId
+        );
+
+        const foundExtPaint = this.exteriorPaints.find(
+            (paint: { paintId: number }) =>
+                paint.paintId == this.vehicleRequest.exteriorPaintId
+        );
+        
+        this.vehicleRequest.totalPrice += foundIntPaint.paintPrice
+        this.vehicleRequest.totalPrice += foundExtPaint.paintPrice
+
+        this.requestDataService.setVehicleRequest(this.vehicleRequest);
         this.nextPage();
     }
 

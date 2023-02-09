@@ -14,7 +14,8 @@
                         value="{{ paint.paintId }}"
                     />
                     <label class="form-check-label" for="int-paint-1">
-                        {{ paint.paintName }} | €{{ paint.paintPrice }}
+                        {{ paint.paintName }} |
+                        {{ paint.paintPrice | currency : "EUR" }}
                     </label>
                 </div>
             </div>
@@ -33,7 +34,8 @@
                         value="{{ paint.paintId }}"
                     />
                     <label class="form-check-label" for="ext-paint-1">
-                        {{ paint.paintName }} | €{{ paint.paintPrice }}
+                        {{ paint.paintName }} |
+                        {{ paint.paintPrice | currency : "EUR" }}
                     </label>
                 </div>
             </div>

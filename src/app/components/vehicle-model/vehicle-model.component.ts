@@ -44,6 +44,7 @@ export class VehicleModelComponent {
 
     ngOnInit() {
         this.fetchData();
+        console.log(`From model init: `, this.vehicleRequest)
     }
 
     searchVehicles() {
@@ -55,7 +56,6 @@ export class VehicleModelComponent {
 
         this.backend.getVehiclesByFilter(filter).subscribe((res) => {
             this.response = res;
-            console.log(res);
             this.lines = this.response.lines;
             this.bodies = this.response.bodies;
 
@@ -64,19 +64,18 @@ export class VehicleModelComponent {
                 ...item,
                 ...this.bodies[index],
             }));
-
-            console.log(this.vehicles);
         });
     }
 
     selectVehicle(index: number) {
-        console.log(`Should do something here`);
-        // add lineId, engineId, bodyId, modelId here to vehicleRequest
+        // get which vehicle was selected
         const selectedVehicle = this.vehicles[index];
+        
         this.vehicleRequest.lineId = selectedVehicle.lineId;
         this.vehicleRequest.bodyId = selectedVehicle.bodyId;
         this.vehicleRequest.engineId = selectedVehicle.vehicleEngine.engineId;
         this.vehicleRequest.modelId = selectedVehicle.vehicleModel.modelId;
+        this.vehicleRequest.totalPrice += selectedVehicle.linePrice
 
         this.requestDataService.setVehicleRequest(this.vehicleRequest);
         this.nextPage();

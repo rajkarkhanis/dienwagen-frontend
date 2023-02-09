@@ -20,7 +20,7 @@ export class VehicleEquipmentComponent {
         private backend: BackendService,
         private requestDataService: RequestDataService
     ) {
-        this.vehicleRequest = requestDataService.getVehicleRequest()
+        this.vehicleRequest = requestDataService.getVehicleRequest();
     }
 
     goBack() {
@@ -29,18 +29,25 @@ export class VehicleEquipmentComponent {
 
     ngOnInit() {
         this.fetchData();
-        console.log(`From equipment: `, this.vehicleRequest)
+        console.log(`From equipment init: `, this.vehicleRequest);
     }
 
     fetchData() {
         this.backend.getEquipments().subscribe((res) => {
             this.equipments = res;
-            console.log(this.equipments)
         });
     }
 
     selectVehicleEquipment() {
-        this.vehicleRequest.equipmentId = Number(this.selectedEquipment)
-        console.log(`Filled object: `, this.vehicleRequest)
+        this.vehicleRequest.equipmentId = Number(this.selectedEquipment);
+        
+        const foundEquipment = this.equipments.find(
+            (equipment: { equipmentId: number }) =>
+                equipment.equipmentId == this.vehicleRequest.equipmentId
+        );
+
+        this.vehicleRequest.totalPrice += foundEquipment.equipmentPrice
+        this.requestDataService.setVehicleRequest(this.vehicleRequest)
+        console.log(`Completed object: `, this.vehicleRequest);
     }
 }

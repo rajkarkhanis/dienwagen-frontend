@@ -44,7 +44,6 @@ export class VehicleModelComponent {
 
     ngOnInit() {
         this.fetchData();
-        console.log(`From model init: `, this.vehicleRequest)
     }
 
     searchVehicles() {
@@ -69,13 +68,14 @@ export class VehicleModelComponent {
 
     selectVehicle(index: number) {
         // get which vehicle was selected
-        const selectedVehicle = this.vehicles[index];
-        
-        this.vehicleRequest.lineId = selectedVehicle.lineId;
-        this.vehicleRequest.bodyId = selectedVehicle.bodyId;
-        this.vehicleRequest.engineId = selectedVehicle.vehicleEngine.engineId;
-        this.vehicleRequest.modelId = selectedVehicle.vehicleModel.modelId;
-        this.vehicleRequest.totalPrice += selectedVehicle.linePrice
+        const selectedLine = this.lines[index]
+        const selectedBody = this.bodies[index]
+
+        this.vehicleRequest.vehicleLine = selectedLine;
+        this.vehicleRequest.vehicleBody = selectedBody;
+        this.vehicleRequest.vehicleEngine = selectedLine.vehicleEngine;
+        this.vehicleRequest.vehicleModel = selectedLine.vehicleModel;
+        this.vehicleRequest.totalPrice += selectedLine.linePrice;
 
         this.requestDataService.setVehicleRequest(this.vehicleRequest);
         this.nextPage();

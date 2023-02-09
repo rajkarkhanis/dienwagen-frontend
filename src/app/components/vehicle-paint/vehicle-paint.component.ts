@@ -49,25 +49,21 @@ export class VehiclePaintComponent {
     }
 
     selectVehiclePaint() {
-        this.vehicleRequest.interiorPaintId = Number(
-            this.selectedInteriorPaint
-        );
-        this.vehicleRequest.exteriorPaintId = Number(
-            this.selectedExteriorPaint
-        );
-
         const foundIntPaint = this.interiorPaints.find(
             (paint: { paintId: number }) =>
-                paint.paintId == this.vehicleRequest.interiorPaintId
+                paint.paintId == Number(this.selectedInteriorPaint)
         );
 
         const foundExtPaint = this.exteriorPaints.find(
             (paint: { paintId: number }) =>
-                paint.paintId == this.vehicleRequest.exteriorPaintId
+                paint.paintId == this.selectedExteriorPaint
         );
         
         this.vehicleRequest.totalPrice += foundIntPaint.paintPrice
         this.vehicleRequest.totalPrice += foundExtPaint.paintPrice
+
+        this.vehicleRequest.interiorPaint = foundIntPaint;
+        this.vehicleRequest.exteriorPaint = foundExtPaint;
 
         this.requestDataService.setVehicleRequest(this.vehicleRequest);
         this.nextPage();

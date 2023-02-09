@@ -2,3 +2,12 @@
     display: grid;
     grid-template-columns: 25% 1fr;
 }
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.summary-grid > div:nth-child(even) {
+    text-align: end;
+}

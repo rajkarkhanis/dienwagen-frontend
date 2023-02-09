@@ -39,18 +39,20 @@ export class VehicleEquipmentComponent {
     }
 
     selectVehicleEquipment() {
-        this.vehicleRequest.equipmentId = Number(this.selectedEquipment);
+        // this.vehicleRequest.equipmentId = Number(this.selectedEquipment);
         
         const foundEquipment = this.equipments.find(
             (equipment: { equipmentId: number }) =>
-                equipment.equipmentId == this.vehicleRequest.equipmentId
+                equipment.equipmentId == Number(this.selectedEquipment)
         );
 
         this.vehicleRequest.totalPrice += foundEquipment.equipmentPrice
+        this.vehicleRequest.vehicleEquipment = foundEquipment;
+
         this.requestDataService.setVehicleRequest(this.vehicleRequest)
         console.log(`Completed object: `, this.vehicleRequest);
 
-        this.saveVehicleRequest(this.vehicleRequest);
+        // this.saveVehicleRequest(this.vehicleRequest);
     }
 
     saveVehicleRequest(vehicleRequest: VehicleRequest) {

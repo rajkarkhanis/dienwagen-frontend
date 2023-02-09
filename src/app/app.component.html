@@ -1,7 +1,94 @@
 <app-navbar></app-navbar>
-<div class="sidebar-layout mt-5">
+<div class="sidebar-layout mt-3">
     <div class="px-4">
         <h3>Summary</h3>
+        <div *ngIf="vehicleRequest">
+            <p class="fw-semibold">Request ID: {{ vehicleRequest.requestId }}</p>
+            <hr />
+            <div *ngIf="vehicleRequest.vehicleLine.lineName !== ''">
+                <div class="summary-grid">
+                    <!-- LINE NAME, ENGINE NAME - LINE PRICE -->
+                    <div>
+                        <p class="fw-light">
+                            {{ vehicleRequest.vehicleLine.lineName }} |
+                            {{
+                                vehicleRequest.vehicleLine.vehicleEngine
+                                    .engineName
+                            }}
+                        </p>
+                    </div>
+                    <div>
+                        <p class="fw-semibold">
+                            {{
+                                vehicleRequest.vehicleLine.linePrice
+                                    | currency : "EUR"
+                            }}
+                        </p>
+                    </div>
+                    <!-- INTERIOR PAINT NAME - PAINT PRICE -->
+                    <div *ngIf="vehicleRequest.interiorPaint.paintName !== ''">
+                        <p class="fw-light">
+                            {{ vehicleRequest.interiorPaint.paintName }}
+                        </p>
+                    </div>
+                    <div *ngIf="vehicleRequest.interiorPaint.paintName !== ''">
+                        <p class="fw-semibold">
+                            {{
+                                vehicleRequest.interiorPaint.paintPrice
+                                    | currency : "EUR"
+                            }}
+                        </p>
+                    </div>
+                    <!-- EXTERIOR PAINT NAME - PAINT PRICE -->
+                    <div *ngIf="vehicleRequest.exteriorPaint.paintName !== ''">
+                        <p class="fw-light">
+                            {{ vehicleRequest.exteriorPaint.paintName }}
+                        </p>
+                    </div>
+                    <div *ngIf="vehicleRequest.exteriorPaint.paintName !== ''">
+                        <p class="fw-semibold">
+                            {{
+                                vehicleRequest.exteriorPaint.paintPrice
+                                    | currency : "EUR"
+                            }}
+                        </p>
+                    </div>
+                    <!-- EQUIPMENT NAME - EQUIPMENT PRICE -->
+                    <div
+                        *ngIf="
+                            vehicleRequest.vehicleEquipment.equipmentName !== ''
+                        "
+                    >
+                        <p class="fw-light">
+                            {{ vehicleRequest.vehicleEquipment.equipmentName }}
+                        </p>
+                    </div>
+                    <div
+                        *ngIf="
+                            vehicleRequest.vehicleEquipment.equipmentName !== ''
+                        "
+                    >
+                        <p class="fw-semibold">
+                            {{
+                                vehicleRequest.vehicleEquipment.equipmentPrice
+                                    | currency : "EUR"
+                            }}
+                        </p>
+                    </div>
+                    <!-- TOTAL PRICE -->
+                    <hr />
+                    <hr />
+                    <div *ngIf="vehicleRequest.totalPrice !== 0">
+                        <p class="fw-light">Purchase Price</p>
+                    </div>
+                    <div *ngIf="vehicleRequest.totalPrice !== 0">
+                        <p class="fw-semibold">
+                            {{ vehicleRequest.totalPrice | currency : "EUR" }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div>
         <router-outlet></router-outlet>

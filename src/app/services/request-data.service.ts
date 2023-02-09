@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { VehicleRequest } from '../classes/vehicle-request';
 
 @Injectable({
@@ -6,6 +7,7 @@ import { VehicleRequest } from '../classes/vehicle-request';
 })
 export class RequestDataService {
     private vehicleRequest: VehicleRequest = new VehicleRequest();
+    vehicleRequestSubject = new Subject<VehicleRequest>();
 
     constructor() {}
 
@@ -15,5 +17,6 @@ export class RequestDataService {
 
     setVehicleRequest(vehicleRequest: VehicleRequest) {
         this.vehicleRequest = vehicleRequest;
+        this.vehicleRequestSubject.next(this.vehicleRequest)
     }
 }

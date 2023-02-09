@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { VehicleRequest } from '../classes/vehicle-request';
 
 @Injectable({
     providedIn: 'root',
@@ -9,6 +10,10 @@ export class BackendService {
 
     createRequest() {
         return this.http.get(`http://localhost:8080/requests/new`)
+    }
+
+    saveRequest(vehicleRequest: VehicleRequest) {
+        return this.http.post(`http://localhost:8080/requests/save`, vehicleRequest)
     }
 
     getCatalogue() {

@@ -49,5 +49,13 @@ export class VehicleEquipmentComponent {
         this.vehicleRequest.totalPrice += foundEquipment.equipmentPrice
         this.requestDataService.setVehicleRequest(this.vehicleRequest)
         console.log(`Completed object: `, this.vehicleRequest);
+
+        this.saveVehicleRequest(this.vehicleRequest);
+    }
+
+    saveVehicleRequest(vehicleRequest: VehicleRequest) {
+        this.backend.saveRequest(vehicleRequest).subscribe(res => {
+            console.log(`Returned response after saving: `, res)
+        })
     }
 }

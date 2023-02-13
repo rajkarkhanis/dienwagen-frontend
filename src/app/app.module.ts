@@ -20,7 +20,7 @@ import { AgreementComponent } from './components/agreement/agreement.component';
 import { ConfirmOrderComponent } from './components/confirm-order/confirm-order.component';
 import { OrderPlacedComponent } from './components/order-placed/order-placed.component';
 import { OrderStatusComponent } from './components/order-status/order-status.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -42,7 +42,7 @@ import { FormsModule } from '@angular/forms';
         OrderPlacedComponent,
         OrderStatusComponent,
     ],
-    imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+    imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
     providers: [],
     bootstrap: [AppComponent],
 })

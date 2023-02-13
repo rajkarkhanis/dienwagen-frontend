@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { VehicleRequest } from 'src/app/classes/vehicle-request';
-import { BackendService } from 'src/app/services/backend.service';
+import { RequestsService } from 'src/app/services/requests.service';
 import { RequestDataService } from 'src/app/services/request-data.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class HomeComponent {
     
     constructor(
         private router: Router,
-        private backend: BackendService,
+        private backend: RequestsService,
         private requestDataService: RequestDataService
     ) {
         this.vehicleRequest = requestDataService.getVehicleRequest()

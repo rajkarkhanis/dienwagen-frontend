@@ -65,13 +65,13 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Raj</td>
-                    <td>Karkhanis</td>
-                    <td>9987348605</td>
-                    <td>rkarkahnis00@gmail.com</td>
-                    <td>Mumbai, MH</td>
+                <tr *ngFor="let customer of customers">
+                    <th scope="row">{{ customer.id }}</th>
+                    <td>{{ customer.firstName }}</td>
+                    <td>{{ customer.lastName }}</td>
+                    <td>{{ customer.phone }}</td>
+                    <td>{{ customer.email }}</td>
+                    <td>{{ customer.address }}</td>
                     <td>
                         <button class="btn btn-success">Select</button>
                     </td>

@@ -5,30 +5,32 @@ import { VehicleRequest } from '../classes/vehicle-request';
 @Injectable({
     providedIn: 'root',
 })
-export class BackendService {
+export class RequestsService {
     constructor(private http: HttpClient) {}
 
+    BASE_URL = "http://localhost:8080"
+
     createRequest() {
-        return this.http.get(`http://localhost:8080/requests/new`)
+        return this.http.get(`${this.BASE_URL}/requests/new`)
     }
 
     saveRequest(vehicleRequest: VehicleRequest) {
-        return this.http.post(`http://localhost:8080/requests/save`, vehicleRequest)
+        return this.http.post(`${this.BASE_URL}/requests/save`, vehicleRequest)
     }
 
     getCatalogue() {
-        return this.http.get(`http://localhost:8080/models`)
+        return this.http.get(`${this.BASE_URL}/models`)
     }
 
     getVehiclesByFilter(filter: any) {
-        return this.http.post(`http://localhost:8080/models`, filter)
+        return this.http.post(`${this.BASE_URL}/models`, filter)
     }
 
     getPaints() {
-        return this.http.get(`http://localhost:8080/paints`)
+        return this.http.get(`${this.BASE_URL}/paints`)
     }
 
     getEquipments() {
-        return this.http.get(`http://localhost:8080/equipments`)
+        return this.http.get(`${this.BASE_URL}/equipments`)
     }
 }

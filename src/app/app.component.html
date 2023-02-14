@@ -3,9 +3,12 @@
     <div class="px-4">
         <h3>Summary</h3>
         <div *ngIf="vehicleRequest">
-            <p class="fw-semibold">
-                Request ID: {{ vehicleRequest.requestId }}
-            </p>
+            <div class="summary-grid mt-3">
+                <p class="fw-light">Request ID</p>
+                <p class="fw-semibold">
+                    {{ vehicleRequest.requestId }}
+                </p>
+            </div>
             <hr />
             <div *ngIf="vehicleRequest.vehicleLine.lineName !== ''">
                 <div class="summary-grid">
@@ -78,8 +81,6 @@
                         </p>
                     </div>
                     <!-- TOTAL PRICE -->
-                    <hr />
-                    <hr />
                     <div *ngIf="vehicleRequest.totalPrice !== 0">
                         <p class="fw-light">Purchase Price</p>
                     </div>

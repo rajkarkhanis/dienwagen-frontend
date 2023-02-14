@@ -1,0 +1,36 @@
+<div class="d-flex flex-column gap-3">
+    <h3 class="align-self-center">Quotation</h3>
+    <div *ngIf="customer.firstName !== ''">
+        <h4>Details of {{ customer.firstName }} {{ customer.lastName }}</h4>
+        <hr />
+        <div class="grid">
+            <p>Customer Name</p>
+            <p>{{ customer.firstName }} {{ customer.lastName }}</p>
+            <p>Phone Number</p>
+            <p>{{ customer.phone }}</p>
+            <p>Address</p>
+            <p>{{ customer.address }}</p>
+            <p>Email ID</p>
+            <p>{{ customer.email }}</p>
+        </div>
+    </div>
+    <div *ngIf="vehicleRequest.totalPrice !== 0">
+        <h4>Price Summary for {{ vehicleRequest.vehicleLine.lineName }}</h4>
+        <hr />
+        <div class="grid">
+            <p>Base Price</p>
+            <p>{{ vehicleRequest.vehicleLine.linePrice | currency: "EUR" }}</p>
+            <p>{{ vehicleRequest.exteriorPaint.paintName }}</p>
+            <p>{{ vehicleRequest.exteriorPaint.paintPrice | currency: "EUR" }}</p>
+            <p>{{ vehicleRequest.interiorPaint.paintName }}</p>
+            <p>{{ vehicleRequest.interiorPaint.paintPrice | currency: "EUR" }}</p>
+            <p>Purchse Price</p>
+            <p>{{ vehicleRequest.totalPrice | currency: "EUR" }}</p>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center gap-3 py-3">
+        <button class="btn btn-outline-primary">Email Offer</button>
+        <button class="btn btn-primary">Print Offer</button>
+        <button class="btn btn-success" (click)="acceptOffer()" >Next</button>
+    </div>
+</div>

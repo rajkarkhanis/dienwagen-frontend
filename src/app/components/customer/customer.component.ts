@@ -37,6 +37,6 @@ export class CustomerComponent {
     }
 
     nextPage() {
-        this.router.navigate(['order'])
+        this.router.navigate(['offer'])
     }
 }

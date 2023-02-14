@@ -40,24 +40,29 @@ export class VehicleEquipmentComponent {
 
     selectVehicleEquipment() {
         // this.vehicleRequest.equipmentId = Number(this.selectedEquipment);
-        
+
         const foundEquipment = this.equipments.find(
             (equipment: { equipmentId: number }) =>
                 equipment.equipmentId == Number(this.selectedEquipment)
         );
 
-        this.vehicleRequest.totalPrice += foundEquipment.equipmentPrice
+        this.vehicleRequest.totalPrice += foundEquipment.equipmentPrice;
         this.vehicleRequest.vehicleEquipment = foundEquipment;
 
-        this.requestDataService.setVehicleRequest(this.vehicleRequest)
+        this.requestDataService.setVehicleRequest(this.vehicleRequest);
         console.log(`Completed object: `, this.vehicleRequest);
 
-        // this.saveVehicleRequest(this.vehicleRequest);
+        this.saveVehicleRequest(this.vehicleRequest);
     }
 
     saveVehicleRequest(vehicleRequest: VehicleRequest) {
-        this.backend.saveRequest(vehicleRequest).subscribe(res => {
-            console.log(`Returned response after saving: `, res)
-        })
+        this.backend.saveRequest(vehicleRequest).subscribe((res) => {
+            console.log(`Returned response after saving: `, res);
+        });
+        this.nextPage();
+    }
+
+    nextPage() {
+        this.router.navigate(['customer']);
     }
 }

@@ -1,14 +1,16 @@
 <div class="px-5">
-    <h3 class="my-3">Customer Details</h3>
-    <div class="two-col-grid">
-        <p>Customer Name</p>
-        <p>Raj Karkhanis</p>
-        <p>Phone Number</p>
-        <p>9987348605</p>
-        <p>Address</p>
-        <p>Mumbai, MH</p>
-        <p>Email ID</p>
-        <p>rkarkhanis00@gmail.com</p>
+    <div *ngIf="customer.firstName !== ''">
+        <h3 class="my-3">Customer Details</h3>
+        <div class="two-col-grid">
+            <p>Customer Name</p>
+            <p>{{ customer.firstName }} {{ customer.lastName }}</p>
+            <p>Phone Number</p>
+            <p>{{ customer.phone }}</p>
+            <p>Address</p>
+            <p>{{ customer.address }}</p>
+            <p>Email ID</p>
+            <p>{{ customer.email }}</p>
+        </div>
     </div>
     <div class="two-col-grid mt-3">
         <div>
@@ -43,6 +45,8 @@
         </div>
     </div>
     <div class="d-flex justify-content-center my-3">
-        <button class="btn btn-success my-3" (click)="showAgreement()">Save and Print Agreement</button>
+        <button class="btn btn-success my-3" (click)="showAgreement()">
+            Save and Print Agreement
+        </button>
     </div>
 </div>

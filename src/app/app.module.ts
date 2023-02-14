@@ -12,7 +12,6 @@ import { VehicleModelComponent } from './components/vehicle-model/vehicle-model.
 import { VehiclePaintComponent } from './components/vehicle-paint/vehicle-paint.component';
 import { VehicleEquipmentComponent } from './components/vehicle-equipment/vehicle-equipment.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { QuotationComponent } from './components/quotation/quotation.component';
 import { OrderComponent } from './components/order/order.component';
 import { PlaceOrderComponent } from './components/place-order/place-order.component';
 import { SearchOrderComponent } from './components/search-order/search-order.component';
@@ -21,6 +20,7 @@ import { ConfirmOrderComponent } from './components/confirm-order/confirm-order.
 import { OrderPlacedComponent } from './components/order-placed/order-placed.component';
 import { OrderStatusComponent } from './components/order-status/order-status.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OfferComponent } from './components/offer/offer.component';
 
 @NgModule({
     declarations: [
@@ -33,7 +33,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         VehiclePaintComponent,
         VehicleEquipmentComponent,
         NavbarComponent,
-        QuotationComponent,
         OrderComponent,
         PlaceOrderComponent,
         SearchOrderComponent,
@@ -41,6 +40,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         ConfirmOrderComponent,
         OrderPlacedComponent,
         OrderStatusComponent,
+        OfferComponent,
     ],
     imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
     providers: [],

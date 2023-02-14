@@ -13,7 +13,6 @@ import { VehicleModelComponent } from './components/vehicle-model/vehicle-model.
 import { VehiclePaintComponent } from './components/vehicle-paint/vehicle-paint.component';
 
 const routes: Routes = [
-    { path: 'order-status', component: OrderStatusComponent },
     { path: 'order-placed', component: OrderPlacedComponent },
     { path: 'confirm-order', component: ConfirmOrderComponent },
     { path: 'agreement', component: AgreementComponent },

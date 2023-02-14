@@ -3,7 +3,9 @@
     <div class="px-4">
         <h3>Summary</h3>
         <div *ngIf="vehicleRequest">
-            <p class="fw-semibold">Request ID: {{ vehicleRequest.requestId }}</p>
+            <p class="fw-semibold">
+                Request ID: {{ vehicleRequest.requestId }}
+            </p>
             <hr />
             <div *ngIf="vehicleRequest.vehicleLine.lineName !== ''">
                 <div class="summary-grid">
@@ -86,6 +88,17 @@
                             {{ vehicleRequest.totalPrice | currency : "EUR" }}
                         </p>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="customer">
+            <hr />
+            <div class="summary-grid">
+                <div><p class="fw-light">Customer Name</p></div>
+                <div>
+                    <p class="fw-semibold">
+                        {{ customer.firstName }} {{ customer.lastName }}
+                    </p>
                 </div>
             </div>
         </div>

@@ -12,41 +12,79 @@
             <p>{{ customer.email }}</p>
         </div>
     </div>
-    <div class="two-col-grid mt-3">
-        <div>
-            <h3 class="my-3">Price List</h3>
-            <div class="two-col-grid">
-                <label for="base-price" class="form-label">Price (in €)</label>
-                <input type="number" class="form-control" id="base-price" />
-                <label for="transport-price" class="form-label"
-                    >Transprot Cost (in €)</label
-                >
-                <input
-                    type="number"
-                    class="form-control"
-                    id="transprot-price"
-                />
-                <label for="discount" class="form-label">Discount (in €)</label>
-                <input type="number" class="form-control" id="discount" />
-                <label for="total-price" class="form-label">Price (in €)</label>
-                <input type="number" class="form-control" id="total-price" />
+    <form [formGroup]="orderDetailsForm" (ngSubmit)="buildOrder()">
+        <div class="two-col-grid mt-3">
+            <div>
+                <h3 class="my-3">Price List</h3>
+                <div class="two-col-grid">
+                    <label for="base-price" class="form-label"
+                        >Base Price (in €)</label
+                    >
+                    <input
+                        type="number"
+                        class="form-control"
+                        id="base-price"
+                        formControlName="basePrice"
+                        [readOnly]="true"
+                    />
+                    <label for="transport-price" class="form-label"
+                        >Transport Cost (in €)</label
+                    >
+                    <input
+                        type="number"
+                        class="form-control"
+                        id="transport-price"
+                        formControlName="transportCost"
+                        (change)="updateTotal()"
+                    />
+                    <label for="discount" class="form-label"
+                        >Discount (in €)</label
+                    >
+                    <input
+                        type="number"
+                        class="form-control"
+                        id="discount"
+                        formControlName="discount"
+                        (change)="updateTotal()"
+                    />
+                    <label for="total-price" class="form-label"
+                        >Total Price (in €)</label
+                    >
+                    <input
+                        type="number"
+                        class="form-control"
+                        id="total-price"
+                        formControlName="totalPrice"
+                        [readOnly]="true"
+                    />
+                </div>
+            </div>
+            <div>
+                <h3 class="my-3">Order Detail</h3>
+                <div class="two-col-grid">
+                    <label for="order-date">Order Date</label>
+                    <input
+                        type="date"
+                        id="order-date"
+                        class="form-control"
+                        formControlName="orderDate"
+                        [min]="getToday()"
+                    />
+                    <label for="delivery-date">Delivery Date</label>
+                    <input
+                        type="date"
+                        id="delivery-date"
+                        class="form-control"
+                        formControlName="deliveryDate"
+                        [min]="getToday()"
+                    />
+                </div>
             </div>
         </div>
-        <div>
-            <h3 class="my-3">Order Detail</h3>
-            <div class="two-col-grid">
-                <label for="order-date">Order Date</label>
-                <input type="date" id="order-date" class="form-control" />
-                <label for="delivery-date">Delivery Date</label>
-                <input type="date" id="delivery-date" class="form-control" />
-                <label for="dealer-id" class="form-label">Dealer ID</label>
-                <input type="number" id="dealer-id" class="form-control" />
-            </div>
+        <div class="d-flex justify-content-center mt-3">
+            <button class="btn btn-success my-3" type="submit">
+                Save and Print Agreement
+            </button>
         </div>
-    </div>
-    <div class="d-flex justify-content-center my-3">
-        <button class="btn btn-success my-3" (click)="showAgreement()">
-            Save and Print Agreement
-        </button>
-    </div>
+    </form>
 </div>

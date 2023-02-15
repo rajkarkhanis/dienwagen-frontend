@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Customer } from '../classes/customer';
+import { CustomerSearch } from '../classes/customer-search';
 
 @Injectable({
     providedIn: 'root',
@@ -16,5 +17,9 @@ export class CustomersService {
 
     saveCustomer(customer: Customer) {
         return this.http.post(`${this.BASE_URL}/customers`, customer);
+    }
+
+    searchCustomer(customerToSearch: CustomerSearch) {
+        return this.http.post(`${this.BASE_URL}/customers/search`, customerToSearch)
     }
 }

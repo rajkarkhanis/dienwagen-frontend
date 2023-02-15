@@ -19,24 +19,18 @@ export class CustomerComponent {
     customers: any;
     selectedCustomer: Customer = new Customer();
 
-    ngOnInit() {
-        this.fetchCustomers();
-    }
-
-    fetchCustomers() {
-        this.customersService.getCustomers().subscribe((res) => {
-            this.customers = res;
-        });
+    fetchCustomers(foundCustomers: any) {
+        this.customers = foundCustomers
     }
 
     selectCustomer(index: number) {
         // get customer selected
         this.selectedCustomer = this.customers[index];
         this.customerDataService.setCustomer(this.selectedCustomer);
-        this.nextPage()
+        this.nextPage();
     }
 
     nextPage() {
-        this.router.navigate(['offer'])
+        this.router.navigate(['offer']);
     }
 }

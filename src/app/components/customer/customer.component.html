@@ -37,7 +37,9 @@
         aria-labelledby="search-tab"
         tabindex="0"
     >
-        <app-search-customer></app-search-customer>
+        <app-search-customer
+            (customersFetchedEvent)="fetchCustomers($event)"
+        ></app-search-customer>
     </div>
     <!-- ADD TAB PANE -->
     <div
@@ -74,7 +76,12 @@
                     <td>{{ customer.email }}</td>
                     <td>{{ customer.address }}</td>
                     <td>
-                        <button class="btn btn-success" (click)="selectCustomer(i)" >Select</button>
+                        <button
+                            class="btn btn-success"
+                            (click)="selectCustomer(i)"
+                        >
+                            Select
+                        </button>
                     </td>
                 </tr>
             </tbody>

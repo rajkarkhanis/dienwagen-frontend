@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Customer } from 'src/app/classes/customer';
 import { CustomersService } from 'src/app/services/customers.service';
@@ -15,6 +15,7 @@ export class AddCustomerComponent {
     ) {}
 
     customer: Customer = new Customer();
+    @Output() customerAddedEvent = new EventEmitter();
 
     addCustomerForm = this.fb.group({
         firstName: ['', Validators.required],
@@ -41,18 +42,19 @@ export class AddCustomerComponent {
         console.log(this.addCustomerForm.status);
     }
 
-    sendRequest() {
-        this.customersService
-            .saveCustomer(this.customer)
-            .subscribe((res) => console.log(res));
-    }
-
-    addCustomer() {
+    buildCustomer() {
         this.customer.firstName = this.addCustomerForm.value.firstName!;
         this.customer.lastName = this.addCustomerForm.value.lastName!;
         this.customer.phone = this.addCustomerForm.value.phone!;
         this.customer.email = this.addCustomerForm.value.email!;
         this.customer.address = this.addCustomerForm.value.address!;
-        this.sendRequest()
+    }
+
+    addCustomer() {
+        this.buildCustomer();
+        this.customersService.saveCustomer(this.customer).subscribe((res) => {
+            console.log(res);
+            this.customerAddedEvent.emit(res);
+        });
     }
 }

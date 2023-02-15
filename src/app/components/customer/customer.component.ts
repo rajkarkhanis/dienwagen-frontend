@@ -16,11 +16,16 @@ export class CustomerComponent {
         private router: Router
     ) {}
 
-    customers: any;
+    customers: any = [];
     selectedCustomer: Customer = new Customer();
+    addedCustomer: Customer = new Customer();
 
     fetchCustomers(foundCustomers: any) {
-        this.customers = foundCustomers
+        this.customers = foundCustomers;
+    }
+
+    addCustomer(newCustomer: any) {
+        this.addedCustomer = newCustomer
     }
 
     selectCustomer(index: number) {

@@ -1,90 +1,109 @@
-<ul class="nav nav-tabs nav-fill" role="tablist">
-    <li class="nav-item" role="presentation">
-        <button
-            class="nav-link active"
-            data-bs-toggle="tab"
-            data-bs-target="#search-tab-pane"
-            type="button"
-            role="tab"
-            aria-controls="search-tab-pane"
-            aria-selected="true"
-        >
-            Search Customer
-        </button>
-    </li>
-    <li class="nav-item">
-        <button
-            class="nav-link"
-            data-bs-toggle="tab"
-            data-bs-target="#add-tab-pane"
-            type="button"
-            role="tab"
-            aria-controls="add-tab-pane"
-            aria-selected="false"
-        >
-            Add Customer
-        </button>
-    </li>
-</ul>
+<div class="px-5">
+    <ul class="nav nav-tabs nav-fill" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button
+                class="nav-link active"
+                data-bs-toggle="tab"
+                data-bs-target="#search-tab-pane"
+                type="button"
+                role="tab"
+                aria-controls="search-tab-pane"
+                aria-selected="true"
+            >
+                Search Customer
+            </button>
+        </li>
+        <li class="nav-item">
+            <button
+                class="nav-link"
+                data-bs-toggle="tab"
+                data-bs-target="#add-tab-pane"
+                type="button"
+                role="tab"
+                aria-controls="add-tab-pane"
+                aria-selected="false"
+            >
+                Add Customer
+            </button>
+        </li>
+    </ul>
 
-<!-- CONTENT -->
-<div class="tab-content">
-    <!-- SEARCH TAB PANE -->
-    <div
-        class="tab-pane fade show active"
-        id="search-tab-pane"
-        role="tabpanel"
-        aria-labelledby="search-tab"
-        tabindex="0"
-    >
-        <app-search-customer
-            (customersFetchedEvent)="fetchCustomers($event)"
-        ></app-search-customer>
-    </div>
-    <!-- ADD TAB PANE -->
-    <div
-        class="tab-pane fade"
-        id="add-tab-pane"
-        role="tabpanel"
-        aria-labelledby="add-tab"
-        tabindex="1"
-    >
-        <app-add-customer></app-add-customer>
-    </div>
-    <!-- CUSTOMER TABLE -->
-    <div class="table-responsive mt-5">
-        <table
-            class="table table-striped table-hover table-bordered align-middle"
-            *ngIf="customers"
+    <!-- CONTENT -->
+    <div class="tab-content">
+        <!-- SEARCH TAB PANE -->
+        <div
+            class="tab-pane fade show active"
+            id="search-tab-pane"
+            role="tabpanel"
+            aria-labelledby="search-tab"
+            tabindex="0"
         >
-            <thead>
-                <tr>
-                    <th scope="col">Customer ID</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Address</th>
-                </tr>
-            </thead>
-            <tbody class="table-group-divider">
-                <tr *ngFor="let customer of customers; let i = index">
-                    <th scope="row">{{ customer.id }}</th>
-                    <td>{{ customer.firstName }}</td>
-                    <td>{{ customer.lastName }}</td>
-                    <td>{{ customer.phone }}</td>
-                    <td>{{ customer.email }}</td>
-                    <td>{{ customer.address }}</td>
-                    <td>
-                        <button
-                            class="btn btn-success"
-                            (click)="selectCustomer(i)"
-                        >
-                            Select
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+            <app-search-customer
+                (customersFetchedEvent)="fetchCustomers($event)"
+            ></app-search-customer>
+        </div>
+        <!-- ADD TAB PANE -->
+        <div
+            class="tab-pane fade"
+            id="add-tab-pane"
+            role="tabpanel"
+            aria-labelledby="add-tab"
+            tabindex="1"
+        >
+            <app-add-customer
+                (customerAddedEvent)="addCustomer($event)"
+            ></app-add-customer>
+        </div>
+        <!-- ADDED CUSTOMER CONFIRMATION -->
+        <div
+            class="alert alert-success alert-dismissible fade show mt-3"
+            role="alert"
+            *ngIf="addedCustomer.firstName !== ''"
+        >
+            {{ addedCustomer.firstName }} {{ addedCustomer.lastName }} added
+            successfully
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+            ></button>
+        </div>
+        <!-- CUSTOMER TABLE -->
+        <div class="table-responsive mt-5">
+            <table
+                class="table table-striped table-hover table-bordered align-middle"
+                *ngIf="customers.length > 0"
+            >
+                <thead>
+                    <tr>
+                        <th scope="col">Customer ID</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Address</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr *ngFor="let customer of customers; let i = index">
+                        <th scope="row">{{ customer.id }}</th>
+                        <td>{{ customer.firstName }}</td>
+                        <td>{{ customer.lastName }}</td>
+                        <td>{{ customer.phone }}</td>
+                        <td>{{ customer.email }}</td>
+                        <td>{{ customer.address }}</td>
+                        <td>
+                            <button
+                                class="btn btn-success"
+                                (click)="selectCustomer(i)"
+                            >
+                                Select
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

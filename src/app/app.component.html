@@ -4,13 +4,15 @@
         <h3>Summary</h3>
         <div *ngIf="vehicleRequest">
             <div class="summary-grid mt-3">
-                <p class="fw-light">Request ID</p>
-                <p class="fw-semibold">
-                    {{ vehicleRequest.requestId }}
-                </p>
+                <div><p class="fw-light">Request ID</p></div>
+                <div>
+                    <p class="fw-semibold">
+                        {{ vehicleRequest.requestId }}
+                    </p>
+                </div>
             </div>
             <hr />
-            <div *ngIf="vehicleRequest.vehicleLine.lineName !== ''">
+            <div *ngIf="vehicleRequest.vehicleLine.lineId !== null">
                 <div class="summary-grid">
                     <!-- LINE NAME, ENGINE NAME - LINE PRICE -->
                     <div>

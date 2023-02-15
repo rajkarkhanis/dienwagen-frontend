@@ -1,8 +1,10 @@
-<div class="d-flex flex-column align-items-center">
+<div class="d-flex flex-column align-items-center gap-3">
     <h3>Welcome to Car Ordering System</h3>
     <p>You can</p>
     <div class="d-flex gap-3">
-        <button class="btn btn-primary" (click)="newRequest()">Start New Request</button>
+        <button class="btn btn-primary" (click)="newRequest()">
+            Start New Request
+        </button>
         <button
             type="button"
             data-bs-toggle="modal"
@@ -38,7 +40,12 @@
                 <label for="requestId" class="form-label"
                     >Enter Request ID:
                 </label>
-                <input type="number" id="requestId" class="form-control" />
+                <input
+                    type="number"
+                    id="requestId"
+                    class="form-control"
+                    [(ngModel)]="searchRequestId"
+                />
             </div>
             <div class="modal-footer">
                 <button
@@ -48,7 +55,14 @@
                 >
                     Close
                 </button>
-                <button type="button" class="btn btn-primary">Search</button>
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-bs-dismiss="modal"
+                    (click)="searchRequest()"
+                >
+                    Search
+                </button>
             </div>
         </div>
     </div>

@@ -17,6 +17,7 @@ export class OrdersService {
     searchOrder(orderId: number) {
         return this.http.get(`${this.BASE_URL}/orders/status/${orderId}`, {
             responseType: 'text',
+            observe: 'response'
         });
     }
 }

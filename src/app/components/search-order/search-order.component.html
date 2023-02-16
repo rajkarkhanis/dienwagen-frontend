@@ -11,9 +11,21 @@
             Search
         </button>
     </div>
+    <div
+        *ngIf="orderNotFound"
+        #notFoundAlert
+        class="alert alert-danger alert-dismissible fade show mt-3"
+    >
+        Order of ID: {{ orderNumber }} not found
+        <button
+            type="button"
+            class="btn-close"
+            aria-label="Close"
+            c
+            (click)="hideAlert()"
+        ></button>
+    </div>
 </div>
 <div *ngIf="orderStatus !== ''" class="mt-5">
-    <app-order-status
-        [orderNumber]="orderNumber"
-    ></app-order-status>
+    <app-order-status [orderNumber]="orderNumber"></app-order-status>
 </div>

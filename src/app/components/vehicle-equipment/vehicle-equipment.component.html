@@ -8,11 +8,14 @@
                         [(ngModel)]="selectedEquipment"
                         class="form-check-input"
                         type="radio"
-                        name="equipment"
-                        id="equipment-1"
+                        name="equipment-{{ equipment.equipmentId }}"
+                        id="equipment-{{ equipment.equipmentId }}"
                         value="{{ equipment.equipmentId }}"
                     />
-                    <label class="form-check-label" for="equipment-1">
+                    <label
+                        class="form-check-label"
+                        for="equipment-{{ equipment.equipmentId }}"
+                    >
                         {{ equipment.equipmentName }} |
                         {{ equipment.equipmentPrice | currency : "EUR" }}
                     </label>
@@ -27,6 +30,7 @@
         <button
             class="btn btn-success mt-3"
             type="button"
+            [disabled]="!selectedEquipment"
             (click)="selectVehicleEquipment()"
         >
             Next

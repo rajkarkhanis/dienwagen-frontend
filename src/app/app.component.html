@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
 <div class="sidebar-layout mt-3">
     <div class="px-4">
-        <h3>Summary</h3>
         <div *ngIf="vehicleRequest">
+            <h3>Summary</h3>
             <div class="summary-grid mt-3">
                 <div><p class="fw-light">Request ID</p></div>
                 <div>
@@ -12,10 +12,10 @@
                 </div>
             </div>
             <hr />
-            <div *ngIf="vehicleRequest.vehicleLine.lineId !== null">
+            <div>
                 <div class="summary-grid">
                     <!-- LINE NAME, ENGINE NAME - LINE PRICE -->
-                    <div>
+                    <div *ngIf="vehicleRequest.vehicleLine.lineName !== ''">
                         <p class="fw-light">
                             {{ vehicleRequest.vehicleLine.lineName }} |
                             {{
@@ -24,7 +24,7 @@
                             }}
                         </p>
                     </div>
-                    <div>
+                    <div *ngIf="vehicleRequest.vehicleLine.linePrice !== 0">
                         <p class="fw-semibold">
                             {{
                                 vehicleRequest.vehicleLine.linePrice

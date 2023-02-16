@@ -13,6 +13,7 @@ export class HomeComponent {
     vehicleRequest: VehicleRequest;
     searchRequestId!: number;
     createdRequest: any;
+    requestNotFound: boolean = false;
 
     constructor(
         private router: Router,
@@ -24,20 +25,25 @@ export class HomeComponent {
 
     searchRequest() {
         console.log('Request id to search for: ', this.searchRequestId);
-        this.requestsService
-            .searchRequest(this.searchRequestId)
-            .subscribe((res) => {
-                this.vehicleRequest = Object.assign(res);
+        this.requestsService.searchRequest(this.searchRequestId).subscribe(
+            (response) => {
+                this.vehicleRequest = Object.assign(response);
                 console.log(this.vehicleRequest);
                 this.requestDataService.setVehicleRequest(this.vehicleRequest);
 
                 // check if vehicle is already configured (equipment is present)
                 if (this.vehicleRequest.vehicleEquipment.equipmentId !== null) {
-                    this.goToCustomers()
+                    this.goToCustomers();
                 } else {
                     this.nextPage();
                 }
-            });
+            },
+            (error) => {
+                if (error.status === 404) {
+                    this.requestNotFound = true;
+                }
+            }
+        );
     }
 
     newRequest() {
@@ -51,7 +57,7 @@ export class HomeComponent {
     }
 
     goToCustomers() {
-        this.router.navigate(['customer'])
+        this.router.navigate(['customer']);
     }
 
     nextPage() {

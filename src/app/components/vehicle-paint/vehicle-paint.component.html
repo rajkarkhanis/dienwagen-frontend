@@ -3,17 +3,20 @@
         <!-- INTERIOR PAINT -->
         <div class="">
             <h3>Select Interior Paint</h3>
-            <div *ngFor="let paint of interiorPaints">
+            <div *ngFor="let paint of interiorPaints; let i = index">
                 <div class="form-check mt-2">
                     <input
                         [(ngModel)]="selectedInteriorPaint"
                         class="form-check-input"
                         type="radio"
-                        name="int-paint"
-                        id="int-paint-1"
+                        name="int-paint-{{ paint.paintId }}"
+                        id="int-paint-{{ paint.paintId }}"
                         value="{{ paint.paintId }}"
                     />
-                    <label class="form-check-label" for="int-paint-1">
+                    <label
+                        class="form-check-label"
+                        for="int-paint-{{ paint.paintId }}"
+                    >
                         {{ paint.paintName }} |
                         {{ paint.paintPrice | currency : "EUR" }}
                     </label>
@@ -29,11 +32,14 @@
                         [(ngModel)]="selectedExteriorPaint"
                         class="form-check-input"
                         type="radio"
-                        name="ext-paint"
-                        id="ext-paint-1"
+                        name="ext-paint-{{ paint.paintId }}"
+                        id="ext-paint-1-{{ paint.paintId }}"
                         value="{{ paint.paintId }}"
                     />
-                    <label class="form-check-label" for="ext-paint-1">
+                    <label
+                        class="form-check-label"
+                        for="ext-paint-1-{{ paint.paintId }}"
+                    >
                         {{ paint.paintName }} |
                         {{ paint.paintPrice | currency : "EUR" }}
                     </label>
@@ -49,6 +55,7 @@
         <button
             class="btn btn-success mt-3"
             type="button"
+            [disabled]="!(selectedInteriorPaint && selectedExteriorPaint)"
             (click)="selectVehiclePaint()"
         >
             Next

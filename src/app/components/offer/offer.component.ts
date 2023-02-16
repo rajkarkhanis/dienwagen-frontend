@@ -26,4 +26,8 @@ export class OfferComponent {
     acceptOffer() {
         this.router.navigate(['order'])
     }
+
+    printOffer() {
+        window.print()
+    }
 }

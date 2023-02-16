@@ -46,9 +46,12 @@
             <p>Customer Signature</p>
         </div>
     </div>
-    <div class="d-flex justify-content-center mb-5">
-        <button class="btn btn-success" (click)="printAgreement()">
+    <div class="d-flex justify-content-center mb-5 gap-3 no-print">
+        <button class="btn btn-primary" (click)="printAgreement()">
             Print Agreement
+        </button>
+        <button class="btn btn-success" (click)="nextPage()">
+            Next
         </button>
     </div>
 </div>

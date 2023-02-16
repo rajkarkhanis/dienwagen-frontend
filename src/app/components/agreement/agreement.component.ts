@@ -24,8 +24,7 @@ export class AgreementComponent {
     }
 
     printAgreement() {
-        // TODO: create & call function to create PDF here
-        this.nextPage()
+        window.print()
     }
 
     nextPage() {

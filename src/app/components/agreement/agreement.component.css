@@ -11,3 +11,9 @@
     height: 3rem;
     width: 12rem;
 }
+
+@media print {
+    .no-print {
+        display: none !important;
+    }
+}

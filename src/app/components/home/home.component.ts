@@ -28,7 +28,6 @@ export class HomeComponent {
         this.requestsService.searchRequest(this.searchRequestId).subscribe(
             (response) => {
                 this.vehicleRequest = Object.assign(response);
-                console.log(this.vehicleRequest);
                 this.requestDataService.setVehicleRequest(this.vehicleRequest);
 
                 // check if vehicle is already configured (equipment is present)

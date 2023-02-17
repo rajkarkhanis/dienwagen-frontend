@@ -32,11 +32,11 @@ export class RequestsService {
         return this.http.post(`${this.BASE_URL}/models`, filter);
     }
 
-    getPaints() {
-        return this.http.get(`${this.BASE_URL}/paints`);
+    getPaints(vehicleModel: any) {
+        return this.http.post(`${this.BASE_URL}/paints`, vehicleModel);
     }
 
-    getEquipments() {
-        return this.http.get(`${this.BASE_URL}/equipments`);
+    getEquipments(vehicleModel: any) {
+        return this.http.post(`${this.BASE_URL}/equipments`, vehicleModel);
     }
 }

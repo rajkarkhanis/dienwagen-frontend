@@ -28,12 +28,12 @@ export class VehicleEquipmentComponent {
     }
 
     ngOnInit() {
-        this.fetchData();
+        this.fetchData(this.vehicleRequest.vehicleModel);
         console.log(`From equipment init: `, this.vehicleRequest);
     }
 
-    fetchData() {
-        this.backend.getEquipments().subscribe((res) => {
+    fetchData(vehicleModel: any) {
+        this.backend.getEquipments(vehicleModel).subscribe((res) => {
             this.equipments = res;
         });
     }

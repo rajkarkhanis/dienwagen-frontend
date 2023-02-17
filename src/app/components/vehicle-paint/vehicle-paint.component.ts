@@ -32,12 +32,12 @@ export class VehiclePaintComponent {
     }
 
     ngOnInit() {
-        this.fetchData();
         console.log(`From paint init: `, this.vehicleRequest);
+        this.fetchData(this.vehicleRequest.vehicleModel);
     }
 
-    fetchData() {
-        this.backend.getPaints().subscribe((res) => {
+    fetchData(vehicleModel: any) {
+        this.backend.getPaints(vehicleModel).subscribe((res) => {
             this.paints = res;
             this.interiorPaints = this.paints.filter(
                 (paint: { paintType: string }) => paint.paintType === 'Interior'

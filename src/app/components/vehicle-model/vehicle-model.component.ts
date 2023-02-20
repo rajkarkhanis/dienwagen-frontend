@@ -23,6 +23,8 @@ export class VehicleModelComponent {
     bodies: any;
     vehicles: any;
 
+    emptyResponse: boolean = true;
+
     vehicleRequest: VehicleRequest;
 
     constructor(
@@ -54,22 +56,39 @@ export class VehicleModelComponent {
         };
 
         this.backend.getVehiclesByFilter(filter).subscribe((res) => {
+            console.log(res);
             this.response = res;
             this.lines = this.response.lines;
             this.bodies = this.response.bodies;
 
+            if (this.lines.length > 0) {
+                this.emptyResponse = false;
+            }
+
             // combine the two arrays into one
-            this.vehicles = this.lines.map((item: any, index: number) => ({
-                ...item,
-                ...this.bodies[index],
-            }));
+            // this.vehicles = this.lines.map((item: any, index: number) => ({
+            //     ...item,
+            //     ...this.bodies[index],
+            // }));
         });
     }
 
     selectVehicle(index: number) {
         // get which vehicle was selected
-        const selectedLine = this.lines[index]
-        const selectedBody = this.bodies[index]
+        const selectedLine = this.lines[index];
+
+        const bodyName = selectedLine.lineName.split(' ').pop();
+        // const selectedBody = this.bodies.find(
+        //     (body: { bodyType: any }) => body.bodyType === bodyName
+        // );
+        const selectedBody = this.bodies
+            .filter(
+                (body: { bodyType: any; vehicleModel: any }) =>
+                    body.bodyType === bodyName &&
+                    selectedLine.vehicleModel.modelId ===
+                        body.vehicleModel.modelId
+            )
+            .pop();
 
         this.vehicleRequest.vehicleLine = selectedLine;
         this.vehicleRequest.vehicleBody = selectedBody;

@@ -1,6 +1,85 @@
 <app-navbar></app-navbar>
 <div class="sidebar-layout mt-3">
-    <div class="px-3"><h4>Summary</h4></div>
+    <div class="px-3">
+        <div *ngIf="vehicleRequest">
+            <h4>Summary</h4>
+            <div class="two-col">
+                <div class="fw-light">Request ID</div>
+                <div class="fw-semibold">{{ vehicleRequest.requestId }}</div>
+            </div>
+            <div *ngIf="vehicleRequest.vehicleLine.lineName !== ''">
+                <hr />
+                <div class="two-col">
+                    <div class="fw-light">
+                        {{ vehicleRequest.vehicleLine.lineName }} |
+                        {{ vehicleRequest.vehicleEngine.engineName }}
+                    </div>
+                    <div class="fw-semibold">
+                        {{
+                            vehicleRequest.vehicleLine.linePrice
+                                | currency : "EUR"
+                        }}
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="vehicleRequest.interiorPaint.paintName !== ''">
+                <div class="two-col">
+                    <div class="fw-light">
+                        {{ vehicleRequest.interiorPaint.paintName }}
+                    </div>
+                    <div class="fw-semibold">
+                        {{
+                            vehicleRequest.interiorPaint.paintPrice
+                                | currency : "EUR"
+                        }}
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="vehicleRequest.exteriorPaint.paintName !== ''">
+                <div class="two-col">
+                    <div class="fw-light">
+                        {{ vehicleRequest.exteriorPaint.paintName }}
+                    </div>
+                    <div class="fw-semibold">
+                        {{
+                            vehicleRequest.exteriorPaint.paintPrice
+                                | currency : "EUR"
+                        }}
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="vehicleRequest.vehicleEquipment.equipmentName !== ''">
+                <div class="two-col">
+                    <div class="fw-light">
+                        {{ vehicleRequest.vehicleEquipment.equipmentName }}
+                    </div>
+                    <div class="fw-semibold">
+                        {{
+                            vehicleRequest.vehicleEquipment.equipmentPrice
+                                | currency : "EUR"
+                        }}
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="vehicleRequest.totalPrice !== 0">
+                <div class="two-col">
+                    <div class="fw-light">Purchase Price</div>
+                    <div class="fw-semibold">
+                        {{ vehicleRequest.totalPrice | currency : "EUR" }}
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="customer">
+                <hr />
+                <div class="two-col">
+                    <div class="fw-light">Customer Name</div>
+                    <div class="fw-semibold">
+                        {{ customer.firstName }} {{ customer.lastName }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div>
         <router-outlet></router-outlet>
     </div>

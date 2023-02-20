@@ -3,12 +3,12 @@
     grid-template-columns: 25% 1fr;
 }
 
-.summary-grid {
+.two-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    row-gap: 1rem;
+    margin-top: 1rem;
 }
 
-.summary-grid > div:nth-child(even) {
+.two-col > div:nth-child(even) {
     text-align: end;
 }

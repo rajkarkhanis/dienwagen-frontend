@@ -8,7 +8,7 @@
                 id="model-select"
                 class="form-select-sm"
             >
-                <option selected value="all">All Types</option>
+                <option selected>Select</option>
                 <option *ngFor="let model of modelNames">{{ model }}</option>
             </select>
             <label for="vehicle-type-select" class="form-label"
@@ -19,7 +19,7 @@
                 id="vehicle-type-select"
                 class="form-select-sm"
             >
-                <option selected value="all">All Types</option>
+                <option selected>Select</option>
                 <option *ngFor="let body of bodyNames">{{ body }}</option>
             </select>
             <label for="engine-type-select" class="form-label"
@@ -30,13 +30,14 @@
                 id="engine-type-select"
                 class="form-select-sm"
             >
-                <option selected value="all">All Types</option>
+                <option selected>Select</option>
                 <option *ngFor="let engine of engineNames">{{ engine }}</option>
             </select>
         </div>
         <button
             class="btn btn-primary mt-3"
             type="button"
+            [disabled]="!(selectedModel || selectedBody || selectedEngine)"
             (click)="searchVehicles()"
         >
             Search
@@ -45,7 +46,7 @@
     <!-- MODEL TABLE -->
     <div class="table-responsive flex-fill">
         <table
-            *ngIf="lines"
+            *ngIf="!emptyResponse"
             class="table table-striped table-hover table-bordered align-middle"
         >
             <thead>
@@ -57,11 +58,11 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                <tr *ngFor="let i = index; let vehicle; of: vehicles">
-                    <th scope="row">{{ vehicle.lineName }}</th>
-                    <td>{{ vehicle.bodyType }}</td>
-                    <td>{{ vehicle.vehicleEngine.engineName }}</td>
-                    <td>{{ vehicle.linePrice | currency : "EUR" }}</td>
+                <tr *ngFor="let line of lines; let i = index">
+                    <th scope="row">{{ line.lineName }}</th>
+                    <td>{{ line.lineName.split(" ").pop() }}</td>
+                    <td>{{ line.vehicleEngine.engineName }}</td>
+                    <td>{{ line.linePrice | currency : "EUR" }}</td>
                     <td>
                         <button
                             class="btn btn-success"

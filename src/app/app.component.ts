@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { Auth } from './classes/auth';
 import { Customer } from './classes/customer';
 import { VehicleRequest } from './classes/vehicle-request';
+import { AuthDataService } from './services/auth-data.service';
 import { CustomerDataService } from './services/customer-data.service';
 import { RequestDataService } from './services/request-data.service';
 
@@ -17,7 +19,7 @@ export class AppComponent {
 
     constructor(
         private requestDataService: RequestDataService,
-        private customerDataService: CustomerDataService
+        private customerDataService: CustomerDataService,
     ) {
         this.requestDataService.vehicleRequestSubject.subscribe((request) => {
             this.vehicleRequest = request;

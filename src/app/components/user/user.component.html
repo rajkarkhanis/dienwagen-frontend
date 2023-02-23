@@ -1,0 +1,9 @@
+<div class="d-flex align-items-center gap-3 mt-3" *ngIf="auth.loggedIn">
+    <div>{{ auth.user.username }}</div>
+    <button class="btn btn-primary">Logout</button>
+</div>
+
+<div *ngIf="!auth.loggedIn" class="d-flex gap-3 mt-3">
+    <a class="btn btn-outline-primary" routerLink="/register">Sign Up</a>
+    <a class="btn btn-primary" routerLink="/login">Log In</a>
+</div>

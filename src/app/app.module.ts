@@ -21,6 +21,9 @@ import { OrderPlacedComponent } from './components/order-placed/order-placed.com
 import { OrderStatusComponent } from './components/order-status/order-status.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OfferComponent } from './components/offer/offer.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
     declarations: [
@@ -41,6 +44,9 @@ import { OfferComponent } from './components/offer/offer.component';
         OrderPlacedComponent,
         OrderStatusComponent,
         OfferComponent,
+        LoginComponent,
+        RegisterComponent,
+        UserComponent,
     ],
     imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
     providers: [],

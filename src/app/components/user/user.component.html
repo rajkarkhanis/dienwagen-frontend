@@ -1,6 +1,6 @@
 <div class="d-flex align-items-center gap-3 mt-3" *ngIf="auth.loggedIn">
     <div>{{ auth.user.username }}</div>
-    <button class="btn btn-primary">Logout</button>
+    <button class="btn btn-primary" (click)="logoutUser()" >Logout</button>
 </div>
 
 <div *ngIf="!auth.loggedIn" class="d-flex gap-3 mt-3">

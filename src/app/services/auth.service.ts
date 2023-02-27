@@ -17,4 +17,10 @@ export class AuthService {
     registerUser(user: User) {
         return this.httpClient.post(`${this.baseURL}/users/register`, user);
     }
+
+    logoutUser(token: string) {
+        return this.httpClient.post(`${this.baseURL}/users/logout`, {
+            Authorization: token
+        });
+    }
 }

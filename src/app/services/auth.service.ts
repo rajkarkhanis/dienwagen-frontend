@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ChangePassword } from '../classes/change-password';
 import { User } from '../classes/user';
 
 @Injectable({
@@ -20,7 +21,14 @@ export class AuthService {
 
     logoutUser(token: string) {
         return this.httpClient.post(`${this.baseURL}/users/logout`, {
-            Authorization: token
+            Authorization: token,
         });
+    }
+
+    changePassword(newPasswordRequest: ChangePassword) {
+        return this.httpClient.post(
+            `${this.baseURL}/users/forgot-password`,
+            newPasswordRequest
+        );
     }
 }

@@ -29,12 +29,12 @@ export class LoginComponent {
     auth: Auth = new Auth();
 
     authenticateUser() {
-        console.log(this.loginForm.value);
         this.user.username = this.loginForm.value.username!;
-        this.user.password = this.loginForm.value.username!;
+        this.user.password = this.loginForm.value.password!;
 
         this.authService.authenticateUser(this.user).subscribe((response) => {
             this.authResponse = response;
+            console.log(this.authResponse)
             window.sessionStorage.setItem(
                 'Authorization',
                 this.authResponse.token
@@ -47,6 +47,6 @@ export class LoginComponent {
             this.authDataService.setAuth(this.auth);
         });
 
-        this.router.navigate(['home']);
+        this.router.navigate(['/home']);
     }
 }

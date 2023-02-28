@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Auth } from 'src/app/classes/auth';
 import { User } from 'src/app/classes/user';
 import { AuthDataService } from 'src/app/services/auth-data.service';
@@ -14,7 +15,8 @@ export class UserComponent {
 
     constructor(
         private authService: AuthService,
-        private authDataService: AuthDataService
+        private authDataService: AuthDataService,
+        private router: Router
     ) {
         authDataService.authSubject.subscribe((res) => (this.auth = res));
     }
@@ -23,5 +25,6 @@ export class UserComponent {
         this.authService.logoutUser(this.auth.token);
         this.auth.loggedIn = false;
         window.sessionStorage.removeItem("Authorization")
+        this.router.navigate(['/'])
     }
 }

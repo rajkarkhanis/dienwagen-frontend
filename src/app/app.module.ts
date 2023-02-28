@@ -24,6 +24,7 @@ import { OfferComponent } from './components/offer/offer.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserComponent } from './components/user/user.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 @NgModule({
     declarations: [
@@ -47,6 +48,7 @@ import { UserComponent } from './components/user/user.component';
         LoginComponent,
         RegisterComponent,
         UserComponent,
+        ForgotPasswordComponent,
     ],
     imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
     providers: [],

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AgreementComponent } from './components/agreement/agreement.component';
 import { ConfirmOrderComponent } from './components/confirm-order/confirm-order.component';
 import { CustomerComponent } from './components/customer/customer.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { OfferComponent } from './components/offer/offer.component';
@@ -15,6 +16,7 @@ import { VehicleModelComponent } from './components/vehicle-model/vehicle-model.
 import { VehiclePaintComponent } from './components/vehicle-paint/vehicle-paint.component';
 
 const routes: Routes = [
+    { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'login', component: LoginComponent },
     { path: 'order-placed', component: OrderPlacedComponent },

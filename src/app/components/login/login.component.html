@@ -33,7 +33,13 @@
             >
                 Forgot Password
             </button>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="!loginForm.valid"
+            >
+                Login
+            </button>
         </div>
     </form>
     <div class="d-flex mt-5 gap-3 align-items-center">

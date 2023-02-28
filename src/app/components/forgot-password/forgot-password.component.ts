@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ChangePassword } from 'src/app/classes/change-password';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -15,9 +15,9 @@ export class ForgotPasswordComponent {
     ) {}
 
     forgotPasswordForm = this.formBuilder.group({
-        username: [],
-        newPassword: [],
-        confirmPassword: [],
+        username: [, Validators.required],
+        newPassword: [, Validators.required],
+        confirmPassword: [, Validators.required],
     });
 
     newPasswordRequest: ChangePassword = new ChangePassword();

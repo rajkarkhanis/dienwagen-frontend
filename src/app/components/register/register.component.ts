@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component, ViewChild } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Auth } from 'src/app/classes/auth';
 import { User } from 'src/app/classes/user';
@@ -20,13 +20,14 @@ export class RegisterComponent {
     ) {}
 
     registerForm = this.formBuilder.group({
-        username: [],
-        password: [],
+        username: [, Validators.required],
+        password: [, Validators.required],
     });
 
     user: User = new User();
     authResponse: any;
     auth: Auth = new Auth();
+    userAlreadyExists: boolean = false;
 
     registerUser() {
         console.log(this.registerForm.value);
@@ -41,11 +42,11 @@ export class RegisterComponent {
                 this.authResponse.token
             );
 
-            this.auth.user = this.user
+            this.auth.user = this.user;
             this.auth.loggedIn = true;
-            this.auth.token = this.authResponse.token
+            this.auth.token = this.authResponse.token;
 
-            this.authDataService.setAuth(this.auth)
+            this.authDataService.setAuth(this.auth);
         });
 
         // route to home page

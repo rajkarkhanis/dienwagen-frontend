@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Auth } from 'src/app/classes/auth';
 import { User } from 'src/app/classes/user';
@@ -20,8 +20,8 @@ export class LoginComponent {
     ) {}
 
     loginForm = this.formBuilder.group({
-        username: [],
-        password: [],
+        username: [, Validators.required],
+        password: [, Validators.required],
     });
 
     user: User = new User();

@@ -60,17 +60,21 @@ export class PlaceOrderComponent {
     }
 
     buildOrder() {
+        this.order.vehicleTransaction.requestId =
+            this.requestDataService.getVehicleRequest().requestId;
+        this.order.vehicleTransaction.customerId =
+            this.customerDataService.getCustomer().id;
         this.order.orderDate = this.orderDetailsForm.value.orderDate!;
         this.order.estDeliveryDate = this.orderDetailsForm.value.deliveryDate!;
         this.order.tranportCost = this.orderDetailsForm.value.transportCost!;
         this.order.totalPrice = this.orderDetailsForm.value.totalPrice!;
 
         this.orderDataService.setOrder(this.order);
-        console.log(this.orderDetailsForm.value.orderDate)
-        this.nextPage()
+        console.log(this.orderDetailsForm.value.orderDate);
+        this.nextPage();
     }
 
     nextPage() {
-        this.router.navigate(['agreement'])
+        this.router.navigate(['agreement']);
     }
 }

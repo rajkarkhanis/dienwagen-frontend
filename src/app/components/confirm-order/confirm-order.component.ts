@@ -18,6 +18,7 @@ export class ConfirmOrderComponent {
         private orderDataService: OrderDataService
     ) {
         this.order = orderDataService.getOrder();
+        console.log(this.order)
     }
 
     checkboxState: boolean = false;

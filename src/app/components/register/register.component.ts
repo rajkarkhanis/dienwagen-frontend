@@ -5,6 +5,7 @@ import { Auth } from 'src/app/classes/auth';
 import { User } from 'src/app/classes/user';
 import { AuthDataService } from 'src/app/services/auth-data.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { Token } from 'src/app/types/Token';
 
 @Component({
     selector: 'app-register',
@@ -35,21 +36,22 @@ export class RegisterComponent {
         this.user.username = this.registerForm.value.username!;
         this.user.password = this.registerForm.value.password!;
 
-        this.authService.registerUser(this.user).subscribe((response) => {
-            this.authResponse = response;
-            window.sessionStorage.setItem(
-                'Authorization',
-                this.authResponse.token
-            );
+        this.authService.registerUser(this.user).subscribe({
+            next: (response: Token) => {
+                window.sessionStorage.setItem('Authorization', response.token);
 
-            this.auth.user = this.user;
-            this.auth.loggedIn = true;
-            this.auth.token = this.authResponse.token;
+                this.auth.user = this.user;
+                this.auth.loggedIn = true;
+                this.auth.token = response.token;
 
-            this.authDataService.setAuth(this.auth);
+                this.authDataService.setAuth(this.auth);
+
+                this.router.navigate(['home']);
+            },
+
+            error: (error) => {
+                if (error.status == 403) console.error(error);
+            },
         });
-
-        // route to home page
-        this.router.navigate(['home']);
     }
 }

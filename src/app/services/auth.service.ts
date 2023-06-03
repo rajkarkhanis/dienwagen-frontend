@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ChangePassword } from '../classes/change-password';
 import { User } from '../classes/user';
+import { Token } from '../types/Token';
 
 @Injectable({
     providedIn: 'root',
@@ -12,11 +13,11 @@ export class AuthService {
     baseURL: string = 'http://localhost:8040';
 
     authenticateUser(user: User) {
-        return this.httpClient.post(`${this.baseURL}/users/login`, user);
+        return this.httpClient.post<Token>(`${this.baseURL}/users/login`, user);
     }
 
     registerUser(user: User) {
-        return this.httpClient.post(`${this.baseURL}/users/register`, user);
+        return this.httpClient.post<Token>(`${this.baseURL}/users/register`, user);
     }
 
     logoutUser(token: string) {
@@ -28,7 +29,10 @@ export class AuthService {
     changePassword(newPasswordRequest: ChangePassword) {
         return this.httpClient.post(
             `${this.baseURL}/users/forgot-password`,
-            newPasswordRequest
+            newPasswordRequest,
+            {
+                observe: 'response',
+            }
         );
     }
 }

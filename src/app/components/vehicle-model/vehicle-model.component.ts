@@ -55,6 +55,8 @@ export class VehicleModelComponent {
             bodyType: this.selectedBody,
         };
 
+        console.log(filter);
+
         this.backend.getVehiclesByFilter(filter).subscribe((res) => {
             console.log(res);
             this.response = res;
@@ -64,12 +66,6 @@ export class VehicleModelComponent {
             if (this.lines.length > 0) {
                 this.emptyResponse = false;
             }
-
-            // combine the two arrays into one
-            // this.vehicles = this.lines.map((item: any, index: number) => ({
-            //     ...item,
-            //     ...this.bodies[index],
-            // }));
         });
     }
 
@@ -78,9 +74,6 @@ export class VehicleModelComponent {
         const selectedLine = this.lines[index];
 
         const bodyName = selectedLine.lineName.split(' ').pop();
-        // const selectedBody = this.bodies.find(
-        //     (body: { bodyType: any }) => body.bodyType === bodyName
-        // );
         const selectedBody = this.bodies
             .filter(
                 (body: { bodyType: any; vehicleModel: any }) =>
